@@ -4,7 +4,7 @@ import socket
 
 vuln = ['redis', '6379']
 
-print('[*]Usage: [IP] [PORT]')
+print('[*]Usage: [IP] [6379]')
 def check(ip, port=6379):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(5)
@@ -15,6 +15,8 @@ def check(ip, port=6379):
         data = s.recv(1024)
         s.close()
         if b"redis_version" in data:
-            return '6379 Redis Unauthorized Access'
+            print('[+]6379 Redis Unauthorized Access')
+        else:
+            print('[-]target is not vulnerable')
     except Exception as e:
         s.close()

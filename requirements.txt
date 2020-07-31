@@ -2,3 +2,5 @@ tkinter
 importlib
 glob
 threading
+inspect
+PySocks

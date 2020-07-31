@@ -25,6 +25,7 @@ def ms15_034_test(domain):
     else:
         print("[-] IIS服务无法显示漏洞是否存在. "+
                "需要手动检测")
+print("[*]用法：Range: bytes=0-18446744073709551615")
 def check(url):
     ms15_034_test(url)
 

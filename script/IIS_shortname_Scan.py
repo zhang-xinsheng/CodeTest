@@ -126,7 +126,7 @@ class Scanner():
             except Exception as e:
                 print('[Exception]', e)
 
-print('[*]Usage: [URL]')
+print('[*]用法: [URL]')
 def check(url, port=None):
     target = url
     s = Scanner(target)

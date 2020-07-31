@@ -259,7 +259,8 @@ class Tomcat(object):
 		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		self.socket.connect((target_host, target_port))
-		self.stream = self.socket.makefile("rb", bufsize=0)
+		#self.stream = self.socket.makefile("rb", bufsize=0
+		self.stream = self.socket.makefile("rb")
 
 	def perform_request(self, req_uri, headers={}, method='GET', user=None, password=None, attributes=[]):
 		self.req_uri = req_uri
@@ -287,7 +288,7 @@ javax.servlet.include.servlet_path
 '''
 
 
-print('[*]Usage: [IP] [PORT]')
+print('[*]Usage: [IP] [8009]')
 def check(url, port=8009):
 	try:
 		t = Tomcat(url, port)

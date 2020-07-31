@@ -1,7 +1,7 @@
 import requests
 
 
-print('[*]Usage: [IP] [PORT]')
+print('[*]Usage: [IP] [7001]')
 def check(url,port=7001):
     """weak password"""
 
